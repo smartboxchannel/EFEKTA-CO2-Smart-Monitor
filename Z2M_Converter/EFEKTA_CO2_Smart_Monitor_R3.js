@@ -22,10 +22,10 @@ const tzLocal = {
                 long_chart_period: ['msCO2', {0x0204: {value, type: 0x10}}],
                 set_altitude: ['msCO2', {0x0205: {value, type: 0x21}}],
                 manual_forced_recalibration: ['msCO2', {0x0207: {value, type: 0x21}}],
-				light_indicator: ['msCO2', {0x0211: {value, type: 0x10}}],
-				light_ind_level: ['msCO2', {0x0209: {value, type: 0x20}}],
-				automatic_scal: ['msCO2', {0x0402: {value, type: 0x10}}],
-				reading_delay: ['msCO2', {0x0201: {value, type: 0x21}}],
+                light_indicator: ['msCO2', {0x0211: {value, type: 0x10}}],
+                light_ind_level: ['msCO2', {0x0209: {value, type: 0x20}}],
+                automatic_scal: ['msCO2', {0x0402: {value, type: 0x10}}],
+                reading_delay: ['msCO2', {0x0201: {value, type: 0x21}}],
             };
             await entity.write(payloads[key][0], payloads[key][1]);
             return {
@@ -67,8 +67,8 @@ const tzLocal = {
             const payloads = {
                 high_gas: ['msCO2', {0x0221: {value, type: 0x21}}],
                 low_gas: ['msCO2', {0x0222: {value, type: 0x21}}],
-				enable_gas: ['msCO2', {0x0220: {value, type: 0x10}}],
-				invert_logic_gas: ['msCO2', {0x0225: {value, type: 0x10}}],
+                enable_gas: ['msCO2', {0x0220: {value, type: 0x10}}],
+                invert_logic_gas: ['msCO2', {0x0225: {value, type: 0x10}}],
             };
             await entity.write(payloads[key][0], payloads[key][1]);
             return {
@@ -102,19 +102,19 @@ const fzLocal = {
             if (msg.data.hasOwnProperty(0x0205)) {
                 result.set_altitude = msg.data[0x0205];
             }
-            if (msg.data.hasOwnProperty(0x0207)) {
+           if (msg.data.hasOwnProperty(0x0207)) {
                 result.manual_forced_recalibration = msg.data[0x0207];
             }
-			if (msg.data.hasOwnProperty(0x0211)) {
-				result.light_indicator = ['OFF', 'ON'][msg.data[0x0211]];
+           if (msg.data.hasOwnProperty(0x0211)) {
+                result.light_indicator = ['OFF', 'ON'][msg.data[0x0211]];
             }
-			if (msg.data.hasOwnProperty(0x0209)) {
+           if (msg.data.hasOwnProperty(0x0209)) {
                 result.light_ind_level = msg.data[0x0209];
             }
-			if (msg.data.hasOwnProperty(0x0402)) {
+           if (msg.data.hasOwnProperty(0x0402)) {
                 result.automatic_scal = ['OFF', 'ON'][msg.data[0x0402]];
             }
-			if (msg.data.hasOwnProperty(0x0201)) {
+           if (msg.data.hasOwnProperty(0x0201)) {
                 result.reading_delay = msg.data[0x0201];
             }
             return result;
@@ -150,13 +150,13 @@ const fzLocal = {
             if (msg.data.hasOwnProperty(0x0221)) {
                 result.high_gas = msg.data[0x0221];
             }
-			if (msg.data.hasOwnProperty(0x0222)) {
+           if (msg.data.hasOwnProperty(0x0222)) {
                 result.low_gas = msg.data[0x0222];
             }
             if (msg.data.hasOwnProperty(0x0220)) {
                 result.enable_gas = ['OFF', 'ON'][msg.data[0x0220]];
             }
-			if (msg.data.hasOwnProperty(0x0225)) {
+           if (msg.data.hasOwnProperty(0x0225)) {
                 result.invert_logic_gas = ['OFF', 'ON'][msg.data[0x0225]];
             }
             return result;
@@ -174,16 +174,16 @@ const definition = {
         configure: async (device, coordinatorEndpoint, logger) => {
             const endpoint = device.getEndpoint(1);
             const clusters = ['msTemperatureMeasurement', 'msRelativeHumidity', 'msCO2'];
-			await reporting.bind(endpoint, coordinatorEndpoint, clusters);
-			const payload1 = [{attribute: {ID: 0x0000, type: 0x39},
+            await reporting.bind(endpoint, coordinatorEndpoint, clusters);
+            const payload1 = [{attribute: {ID: 0x0000, type: 0x39},
             minimumReportInterval: 0, maximumReportInterval: 600, reportableChange: 0}];
             await endpoint.configureReporting('msCO2', payload1);
-			const payload2 = [{attribute: {ID: 0x0000, type: 0x29},
+            const payload2 = [{attribute: {ID: 0x0000, type: 0x29},
             minimumReportInterval: 0, maximumReportInterval: 600, reportableChange: 0}];
-			await endpoint.configureReporting('msTemperatureMeasurement', payload2);
-			const payload3 = [{attribute: {ID: 0x0000, type: 0x21},
+            await endpoint.configureReporting('msTemperatureMeasurement', payload2);
+            const payload3 = [{attribute: {ID: 0x0000, type: 0x21},
             minimumReportInterval: 0, maximumReportInterval: 600, reportableChange: 0}];
-			await endpoint.configureReporting('msRelativeHumidity', payload3);
+            await endpoint.configureReporting('msRelativeHumidity', payload3);
         },
         exposes: [e.co2(), e.temperature(), e.humidity(),
 		    exposes.numeric('reading_delay', ea.STATE_SET).withUnit('Seconds').withDescription('Setting the sensor reading delay. Setting the time in seconds, by default 30 seconds')
