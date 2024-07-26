@@ -1,9 +1,112 @@
 {
+  "name": "Датчик EFEKTA CO2 Smart Monitor",
   "manufacturer": "EfektaLab",
   "model": "EFEKTA_CO2_Smart_Monitor",
   "manufacturerId": "EfektaLab",
   "modelId": "EFEKTA_CO2_Smart_Monitor",
+  "catalogId": -1,
+  "status": "Test",
   "init": [
+    {
+      "zcl": [
+	    {
+          "endpoint": 1,
+          "cluster": "040D_CarbonDioxide",
+          "attribute": "0201_Custom",
+          "zclDataType": "UNSIGNED_16_BIT_INTEGER"
+        },
+		{
+          "endpoint": 1,
+          "cluster": "040D_CarbonDioxide",
+          "attribute": "0202_Custom",
+          "zclDataType": "BOOLEAN"
+        },
+		{
+          "endpoint": 1,
+          "cluster": "040D_CarbonDioxide",
+          "attribute": "0203_Custom",
+          "zclDataType": "BOOLEAN"
+        },
+		{
+          "endpoint": 1,
+          "cluster": "040D_CarbonDioxide",
+          "attribute": "0204_Custom",
+          "zclDataType": "BOOLEAN"
+        },
+		{
+          "endpoint": 1,
+          "cluster": "040D_CarbonDioxide",
+          "attribute": "0205_Custom",
+          "zclDataType": "UNSIGNED_16_BIT_INTEGER"
+        },
+		{
+          "endpoint": 1,
+          "cluster": "040D_CarbonDioxide",
+          "attribute": "0206_Custom",
+          "zclDataType": "BOOLEAN"
+        },
+		{
+          "endpoint": 1,
+          "cluster": "040D_CarbonDioxide",
+          "attribute": "0207_Custom",
+          "zclDataType": "UNSIGNED_16_BIT_INTEGER"
+        },
+		{
+          "endpoint": 1,
+          "cluster": "040D_CarbonDioxide",
+          "attribute": "0209_Custom",
+          "zclDataType": "UNSIGNED_8_BIT_INTEGER"
+        },
+		{
+          "endpoint": 1,
+          "cluster": "040D_CarbonDioxide",
+          "attribute": "0211_Custom",
+          "zclDataType": "BOOLEAN"
+        },
+		{
+          "endpoint": 1,
+          "cluster": "040D_CarbonDioxide",
+          "attribute": "0220_Custom",
+          "zclDataType": "BOOLEAN"
+        },
+		{
+          "endpoint": 1,
+          "cluster": "040D_CarbonDioxide",
+          "attribute": "0221_Custom",
+          "zclDataType": "UNSIGNED_16_BIT_INTEGER"
+        },
+		{
+          "endpoint": 1,
+          "cluster": "040D_CarbonDioxide",
+          "attribute": "0222_Custom",
+          "zclDataType": "UNSIGNED_16_BIT_INTEGER"
+        },
+		{
+          "endpoint": 1,
+          "cluster": "040D_CarbonDioxide",
+          "attribute": "0225_Custom",
+          "zclDataType": "BOOLEAN"
+        },
+		{
+          "endpoint": 1,
+          "cluster": "040D_CarbonDioxide",
+          "attribute": "0402_Custom",
+          "zclDataType": "BOOLEAN"
+        },
+		{
+          "endpoint": 1,
+          "cluster": "0402_TemperatureMeasurement",
+          "attribute": "0410_Custom",
+          "zclDataType": "SIGNED_16_BIT_INTEGER"
+        },
+		{
+          "endpoint": 1,
+          "cluster": "0405_RelativeHumidityMeasurement",
+          "attribute": "0210_Custom",
+          "zclDataType": "SIGNED_16_BIT_INTEGER"
+        }
+      ]
+    },
     {
       "link": {
         "endpoint": 1,
@@ -12,7 +115,7 @@
       },
       "bind": true,
       "report": {
-        "min": 30,
+        "min": 20,
         "max": 600,
         "change": 0.000001
 	  }
@@ -25,7 +128,7 @@
       },
       "bind": true,
       "report": {
-        "min": 30,
+        "min": 20,
         "max": 600,
         "change": 10
 	  }
@@ -38,9 +141,9 @@
       },
       "bind": true,
       "report": {
-        "min": 30,
+        "min": 20,
         "max": 600,
-        "change": 30
+        "change": 25
 	  }
     }
   ],
@@ -97,9 +200,10 @@
       "link": {
         "endpoint": 1,
         "cluster": "040D_CarbonDioxide",
-        "attribute": "0201_ReadingDelay"
+        "attribute": "0201_Custom"
 		},
       "name": "Интервал чтения сенсоров, в секундах",
+	  "unit": "сек.",
       "type": "Integer",
       "init": false,
       "value": 30,
@@ -110,7 +214,7 @@
       "link": {
         "endpoint": 1,
         "cluster": "040D_CarbonDioxide",
-        "attribute": "0211_LightIndicator"
+        "attribute": "0211_Custom"
 		},
       "name": "Включение/отключение цветовой индикации",
       "type": "Boolean",
@@ -121,9 +225,10 @@
       "link": {
         "endpoint": 1,
         "cluster": "040D_CarbonDioxide",
-        "attribute": "0209_IndicatorBrightness"
+        "attribute": "0209_Custom"
 		},
       "name": "Уровень яркости цветовой индикации",
+	  "unit": "%",
       "type": "Integer",
       "init": false,
       "value": 1,
@@ -134,9 +239,10 @@
       "link": {
         "endpoint": 1,
         "cluster": "040D_CarbonDioxide",
-        "attribute": "0205_SetAltitude"
+        "attribute": "0205_Custom"
 		},
       "name": "Установка высоты над уровнем моря",
+	  "unit": "м.",
       "type": "Integer",
       "init": false,
       "value": 0,
@@ -147,36 +253,39 @@
       "link": {
         "endpoint": 1,
         "cluster": "0402_TemperatureMeasurement",
-        "attribute": "0410_TempCorrection"
+        "attribute": "0410_Custom"
       },
-      "name": "Корректировка температуры",
+     "name": "Корректировка температуры",
+	  "description": "Единица равна корректировке в 0.1°C.",
+	  "unit": "°C",
       "type": "Integer",
       "init": false,
-      "value": 0,
+      "value": 1,
       "minValue": -50,
-      "maxValue": 50,
-      "minStep": 0.1
+      "maxValue": 50
     },
     {
       "link": {
         "endpoint": 1,
         "cluster": "0405_RelativeHumidityMeasurement",
-        "attribute": "0210_HumidityCorrection"
+        "attribute": "0210_Custom"
       },
       "name": "Корректировка влажности",
+	  "unit": "%",
       "type": "Integer",
       "init": false,
-      "value": 0,
-      "minValue": 0,
-      "maxValue": 99
+      "value": 1,
+      "minValue": -50,
+      "maxValue": 50
     },
 	{
       "link": {
         "endpoint": 1,
         "cluster": "040D_CarbonDioxide",
-        "attribute": "0202_ForceRecalibration"
+        "attribute": "0202_Custom"
 		},
-      "name": "Принудительная калибровка датчика CO2 на атмосферный уровень CO2",
+      "name": "Форсированная калибровка датчика на атмосферный уровень CO2 (450ppm)",
+	  "description": "Оставить датчик на свежем воздуже, минимум на 15 минут, через 15 минут включить калибровку",
       "type": "Boolean",
       "init": false,
       "value": false
@@ -185,9 +294,11 @@
       "link": {
         "endpoint": 1,
         "cluster": "040D_CarbonDioxide",
-        "attribute": "0207_ManualCalibration"
+        "attribute": "0207_Custom"
 		},
-      "name": "Принудительная калибровка датчика CO2 по данным с другого СО2 датчика",
+      "name": "Форсированная калибровка датчика по данным с другого СО2 датчика",
+	  "description": "Выполняется в стабильной воздушной среде, без сквозняков, оставить 2 датчика рядом минимум на 15 минут и после отправить значение с поверочного датчика",
+	  "unit": "ppm",
       "type": "Integer",
       "init": false,
       "value": 0,
@@ -198,9 +309,10 @@
       "link": {
         "endpoint": 1,
         "cluster": "040D_CarbonDioxide",
-        "attribute": "0402_AutoRecalibration"
+        "attribute": "0402_Custom"
 		},
-      "name": "Включение автокалибровки датчика CO2",
+      "name": "Включение переодической автокалибровки сенсора CO2",
+	  "description": "Цикл сбора данных 1 неделя",
       "type": "Boolean",
       "init": false,
       "value": true
@@ -209,9 +321,9 @@
       "link": {
         "endpoint": 1,
         "cluster": "040D_CarbonDioxide",
-        "attribute": "0206_FactoryResetCO2"
+        "attribute": "0206_Custom"
 		},
-      "name": "Сброс калибровки датчика CO2 на заводские настройки",
+      "name": "Сброс сенсора CO2 на заводские настройки",
       "type": "Boolean",
       "init": false,
       "value": false
@@ -220,9 +332,10 @@
       "link": {
         "endpoint": 1,
         "cluster": "040D_CarbonDioxide",
-        "attribute": "0220_Enable"
+        "attribute": "0220_Custom"
 		},
       "name": "Газостат СО2",
+	  "description": "Активация режима работы датчика как газостата, нужна привязка к исполнительному устройсву по кластеру OnOff.",
       "type": "Boolean",
       "init": false,
       "value": false
@@ -231,9 +344,10 @@
       "link": {
         "endpoint": 1,
         "cluster": "040D_CarbonDioxide",
-        "attribute": "0225_Invert"
+        "attribute": "0225_Custom"
 		},
       "name": "Газостат СО2, Инвертирование",
+	  "description": "Инвертирование логики работы, ...включить, если выше верхнего уровня / ...выключить, если выше верхнего уровня.",
       "type": "Boolean",
       "init": false,
       "value": false
@@ -242,9 +356,10 @@
       "link": {
         "endpoint": 1,
         "cluster": "040D_CarbonDioxide",
-        "attribute": "0221_HighBorder"
+        "attribute": "0221_Custom"
 		},
       "name": "Газостат СО2, верхняя граница",
+	  "unit": "ppm",
       "type": "Integer",
       "init": false,
       "value": 1,
@@ -255,9 +370,10 @@
       "link": {
         "endpoint": 1,
         "cluster": "040D_CarbonDioxide",
-        "attribute": "0222_LowBorder"
+        "attribute": "0222_Custom"
 		},
       "name": "Газостат СО2, нижняя граница",
+	  "unit": "ppm",
       "type": "Integer",
       "init": false,
       "value": 1,
@@ -271,10 +387,10 @@
         "output": true
       },
       "name": "Прямая работа вкл/выкл",
-      "description": "Работает биндинг только одного параметра.",
+      "description": "Прямое управление исполнительным устройством (реле, розетки, выключатели).",
       "type": "String",
       "bind": true,
-      "bindGroup": true
+      "bindGroup": false
     }
   ]
 }
