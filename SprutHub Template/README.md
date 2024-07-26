@@ -15,3 +15,7 @@ Sprut.hub Wiki | Добавление кастомных шаблонов - http
 ![EFEKTA CO2 Smart Monitor](https://raw.githubusercontent.com/smartboxchannel/EFEKTA-CO2-Smart-Monitor/main/Images/03.png) 
 
 ![EFEKTA CO2 Smart Monitor](https://raw.githubusercontent.com/smartboxchannel/EFEKTA-CO2-Smart-Monitor/main/Images/04.png) 
+
+![EFEKTA CO2 Smart Monitor](https://raw.githubusercontent.com/smartboxchannel/EFEKTA-CO2-Smart-Monitor/main/Images/05.jpg) 
+
+![EFEKTA CO2 Smart Monitor](https://raw.githubusercontent.com/smartboxchannel/EFEKTA-CO2-Smart-Monitor/main/Images/06.jpg) 
