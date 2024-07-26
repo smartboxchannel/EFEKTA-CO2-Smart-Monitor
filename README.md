@@ -19,4 +19,6 @@
 
 ![EFEKTA CO2 Smart Monitor](https://raw.githubusercontent.com/smartboxchannel/EFEKTA-CO2-Smart-Monitor/main/Images/01.png) 
 
+![EFEKTA CO2 Smart Monitor](https://raw.githubusercontent.com/smartboxchannel/EFEKTA-CO2-Smart-Monitor/main/Images/05.jpg) 
+
 
